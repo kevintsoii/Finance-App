@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<HBox fx:id="mainBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.MainController">
+   <children>
+      <AnchorPane prefHeight="800.0" prefWidth="300.0" style="-fx-background-color: LIGHTSLATEGRAY;">
+         <children>
+            <Button layoutX="63.0" layoutY="297.0" mnemonicParsing="false" onAction="#showAddAccount" prefHeight="40.0" prefWidth="175.0" text="Add Account" />
+            <Button layoutX="63.0" layoutY="347.0" mnemonicParsing="false" onAction="#showCreateTransactionType" prefHeight="40.0" prefWidth="175.0" text="Create Transaction Type" />
+            <Button layoutX="63.0" layoutY="397.0" mnemonicParsing="false" onAction="#showEnterTransaction" prefHeight="40.0" prefWidth="175.0" text="Enter Transaction" />
+            <Button layoutX="63.0" layoutY="447.0" mnemonicParsing="false" onAction="#showScheduleTransaction" prefHeight="40.0" prefWidth="175.0" text="Schedule Transaction" />
+            <Button layoutX="63.0" layoutY="547.0" mnemonicParsing="false" onAction="#showTransactions" prefHeight="40.0" prefWidth="175.0" text="View Transactions" />
+            <Button layoutX="63.0" layoutY="597.0" mnemonicParsing="false" onAction="#showScheduledTransactions" prefHeight="40.0" prefWidth="175.0" text="View Scheduled Transactions" />
+            <Button layoutX="63.0" layoutY="647.0" mnemonicParsing="false" onAction="#showReports" prefHeight="40.0" prefWidth="175.0" text="Generate Reports" />
+            <Text layoutX="37.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Budget Buddy">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </children>
+</HBox>
