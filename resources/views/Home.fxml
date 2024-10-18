@@ -11,5 +11,20 @@
             <Font size="48.0" />
          </font>
       </Text>
+      <Text layoutX="46.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Upcoming Transactions">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
+      <Text layoutX="46.0" layoutY="335.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monthly Spend">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
+      <Text layoutX="46.0" layoutY="535.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Biggest Spend">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
