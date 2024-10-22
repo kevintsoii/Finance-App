@@ -22,6 +22,11 @@ public class AddAccountController {
 	@FXML TextField balance;
 	@FXML Text message;
 	
+	 @FXML
+	 public void initialize() {
+		 date.setValue(LocalDate.now());
+	}
+	
 	@FXML
 	public void showHome() {
 		URL url = getClass().getResource("/views/Home.fxml");

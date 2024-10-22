@@ -40,7 +40,7 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <DatePicker fx:id="date" layoutX="46.0" layoutY="297.0" prefHeight="45.0" prefWidth="250.0" promptText="Today" />
+      <DatePicker fx:id="date" layoutX="46.0" layoutY="297.0" prefHeight="45.0" prefWidth="250.0" promptText="Today" style="-fx-font-size: 18px;" />
       <Button layoutX="46.0" layoutY="467.0" mnemonicParsing="false" onAction="#submit" prefHeight="45.0" prefWidth="90.0" text="Submit">
          <font>
             <Font size="18.0" />
