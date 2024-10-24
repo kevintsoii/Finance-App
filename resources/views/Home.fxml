@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -11,20 +13,22 @@
             <Font size="48.0" />
          </font>
       </Text>
-      <Text layoutX="46.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Upcoming Transactions">
+      <Text layoutX="46.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Accounts">
          <font>
             <Font size="22.0" />
          </font>
       </Text>
-      <Text layoutX="46.0" layoutY="335.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monthly Spend">
+      <Text layoutX="46.0" layoutY="550.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Upcoming Transactions">
          <font>
             <Font size="22.0" />
          </font>
       </Text>
-      <Text layoutX="46.0" layoutY="535.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Biggest Spend">
-         <font>
-            <Font size="22.0" />
-         </font>
-      </Text>
+      <TableView fx:id="accountTable" layoutX="46.0" layoutY="150.0" prefHeight="350.0" prefWidth="800.0">
+        <columns>
+          <TableColumn prefWidth="198.0" text="Name" />
+          <TableColumn minWidth="0.0" prefWidth="113.0" text="Balance" />
+            <TableColumn prefWidth="152.0" text="Opening Date" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>

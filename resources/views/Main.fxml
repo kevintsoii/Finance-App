@@ -10,16 +10,37 @@
    <children>
       <AnchorPane prefHeight="800.0" prefWidth="300.0" style="-fx-background-color: LIGHTSLATEGRAY;">
          <children>
-            <Button layoutX="63.0" layoutY="297.0" mnemonicParsing="false" onAction="#showAddAccount" prefHeight="40.0" prefWidth="175.0" text="Add Account" />
-            <Button layoutX="63.0" layoutY="347.0" mnemonicParsing="false" onAction="#showCreateTransactionType" prefHeight="40.0" prefWidth="175.0" text="Create Transaction Type" />
-            <Button layoutX="63.0" layoutY="397.0" mnemonicParsing="false" onAction="#showEnterTransaction" prefHeight="40.0" prefWidth="175.0" text="Enter Transaction" />
-            <Button layoutX="63.0" layoutY="447.0" mnemonicParsing="false" onAction="#showScheduleTransaction" prefHeight="40.0" prefWidth="175.0" text="Schedule Transaction" />
-            <Button layoutX="63.0" layoutY="547.0" mnemonicParsing="false" onAction="#showTransactions" prefHeight="40.0" prefWidth="175.0" text="View Transactions" />
-            <Button layoutX="63.0" layoutY="597.0" mnemonicParsing="false" onAction="#showScheduledTransactions" prefHeight="40.0" prefWidth="175.0" text="View Scheduled Transactions" />
-            <Button layoutX="63.0" layoutY="647.0" mnemonicParsing="false" onAction="#showReports" prefHeight="40.0" prefWidth="175.0" text="Generate Reports" />
-            <Text layoutX="37.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Budget Buddy">
+            <Button layoutX="60.0" layoutY="301.0" mnemonicParsing="false" onAction="#showAddAccount" prefHeight="40.0" prefWidth="180.0" text="Add Account">
                <font>
-                  <Font size="36.0" />
+                  <Font size="15.0" />
+               </font></Button>
+            <Button layoutX="60.0" layoutY="351.0" mnemonicParsing="false" onAction="#showCreateTransactionType" prefHeight="40.0" prefWidth="180.0" text="Add Transaction Type">
+               <font>
+                  <Font size="15.0" />
+               </font></Button>
+            <Button layoutX="60.0" layoutY="401.0" mnemonicParsing="false" onAction="#showEnterTransaction" prefHeight="40.0" prefWidth="180.0" text="Enter Transaction">
+               <font>
+                  <Font size="15.0" />
+               </font></Button>
+            <Button layoutX="60.0" layoutY="451.0" mnemonicParsing="false" onAction="#showScheduleTransaction" prefHeight="40.0" prefWidth="180.0" text="Schedule Transaction">
+               <font>
+                  <Font size="15.0" />
+               </font></Button>
+            <Button layoutX="60.0" layoutY="551.0" mnemonicParsing="false" onAction="#showTransactions" prefHeight="40.0" prefWidth="180.0" text="View Transactions">
+               <font>
+                  <Font size="15.0" />
+               </font></Button>
+            <Button layoutX="60.0" layoutY="601.0" mnemonicParsing="false" onAction="#showScheduledTransactions" prefHeight="40.0" prefWidth="180.0" text="View Scheduled">
+               <font>
+                  <Font size="15.0" />
+               </font></Button>
+            <Button layoutX="60.0" layoutY="651.0" mnemonicParsing="false" onAction="#showReports" prefHeight="40.0" prefWidth="180.0" text="Generate Reports">
+               <font>
+                  <Font size="15.0" />
+               </font></Button>
+            <Text layoutX="27.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Budget Buddy" textAlignment="CENTER" wrappingWidth="246.1640625">
+               <font>
+                  <Font size="48.0" />
                </font>
             </Text>
          </children>
