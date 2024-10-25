@@ -1,6 +1,7 @@
 package application.models;
 
 import java.util.HashMap;
+import java.util.ArrayList;
 import application.util.FileUtil;
 
 public class AccountManager {
@@ -30,5 +31,9 @@ public class AccountManager {
         accounts.put(a.getName(), a);
         saveAccounts();
         return true;
+    }
+
+    public ArrayList<Account> getAccounts() {
+        return new ArrayList<>(accounts.values());
     }
 }
