@@ -30,6 +30,7 @@ public class MainController {
 
     @FXML
     public void showEnterTransaction() {
+        FXUtil.setPage("/views/AddTransaction.fxml");
     }
 
     @FXML
