@@ -27,11 +27,9 @@ public class FileUtil {
             
             // Put each line into HashMap
             while ((line = reader.readLine()) != null) {
-                if (line.split(",").length == 3) {
-                    V object = createObject.apply(line);
-                    K key = getKey.apply(object);
-                    objects.put(key, object);
-                }
+                V object = createObject.apply(line);
+                K key = getKey.apply(object);
+                objects.put(key, object);
             }
         } catch (IOException e) {
             e.printStackTrace();

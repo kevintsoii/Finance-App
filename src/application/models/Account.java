@@ -36,7 +36,7 @@ public class Account {
     
     // Unique ID
     public String getKey() {
-        return name;
+        return getName();
     }
     
     // CSV String -> Object

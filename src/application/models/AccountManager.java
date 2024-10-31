@@ -18,7 +18,7 @@ public class AccountManager {
         return instance;
     }
     
-    public void saveAccounts() {
+    public void save() {
         FileUtil.writeMapToFile(FILE_PATH, accounts);
     }
     
@@ -28,8 +28,8 @@ public class AccountManager {
             return false;
         }
         
-        accounts.put(a.getName(), a);
-        saveAccounts();
+        accounts.put(a.getKey(), a);
+        save();
         return true;
     }
 

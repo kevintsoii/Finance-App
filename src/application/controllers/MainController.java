@@ -25,6 +25,7 @@ public class MainController {
 
     @FXML
     public void showCreateTransactionType() {
+        FXUtil.setPage("/views/AddType.fxml");
     }
 
     @FXML
