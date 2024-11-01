@@ -8,57 +8,68 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="800.0" prefWidth="900.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.AddTransactionController">
    <children>
-      <Button layoutX="46.0" layoutY="41.0" mnemonicParsing="false" text="Go Home" />
+      <Button layoutX="46.0" layoutY="41.0" mnemonicParsing="false" onAction="#showHome" text="Go Home" />
       <Text layoutX="46.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Transaction">
          <font>
-            <Font size="46.0" />
+            <Font size="48.0" />
          </font>
       </Text>
-      <Text layoutX="46.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account">
+      <Text layoutX="46.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account">
          <font>
-            <Font size="26.0" />
+            <Font size="24.0" />
          </font>
       </Text>
-      <ComboBox layoutX="46.0" layoutY="180.0" prefWidth="250.0" promptText="Select Account" />
-      <Text layoutX="46.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Transaction Type">
+      <ComboBox fx:id="account" layoutX="46.0" layoutY="190.0" prefHeight="40.0" prefWidth="300.0" promptText="Choose an Account" style="-fx-font-size: 16px;" />
+      <Text layoutX="467.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Transaction Type">
          <font>
-            <Font size="26.0" />
+            <Font size="24.0" />
          </font>
       </Text>
-      <ComboBox layoutX="46.0" layoutY="250.0" prefWidth="250.0" promptText="Select Type" />
-      <Text layoutX="46.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Transaction Date">
+      <ComboBox fx:id="type" layoutX="467.0" layoutY="190.0" prefHeight="40.0" prefWidth="300.0" promptText="Choose a Type" style="-fx-font-size: 16px;" />
+      <Text layoutX="46.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date">
          <font>
-            <Font size="26.0" />
+            <Font size="24.0" />
          </font>
       </Text>
-      <DatePicker layoutX="46.0" layoutY="320.0" prefHeight="30.0" prefWidth="250.0" promptText="Today" />
-      <Text layoutX="46.0" layoutY="385.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Transaction Description">
+      <DatePicker fx:id="date" layoutX="46.0" layoutY="290.0" prefHeight="40.0" prefWidth="250.0" promptText="Today" style="-fx-font-size: 16px;" />
+      <Text layoutX="46.0" layoutY="380.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description">
          <font>
-            <Font size="26.0" />
+            <Font size="24.0" />
          </font>
       </Text>
-      <TextField layoutX="46.0" layoutY="395.0" prefHeight="25.0" prefWidth="400.0" promptText="Oct. car payment, Nov. house payment, etc." />
-      <Text layoutX="46.0" layoutY="455.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment Amount">
+      <TextField fx:id="description" layoutX="46.0" layoutY="390.0" prefHeight="25.0" prefWidth="400.0" promptText="Text">
          <font>
-            <Font size="26.0" />
+            <Font size="18.0" />
          </font>
-      </Text>
-      <TextField layoutX="46.0" layoutY="465.0" prefHeight="25.0" prefWidth="400.0" promptText="100.0" />
-      <Text layoutX="46.0" layoutY="525.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Deposit Amount">
+      </TextField>
+      <Text layoutX="46.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment Amount">
          <font>
-            <Font size="26.0" />
+            <Font size="24.0" />
          </font>
       </Text>
-      <TextField layoutX="46.0" layoutY="535.0" prefHeight="25.0" prefWidth="400.0" promptText="100.0" />
-      <Button layoutX="46.0" layoutY="595.0" mnemonicParsing="false" text="Submit">
+      <TextField fx:id="payment" layoutX="46.0" layoutY="490.0" prefHeight="25.0" prefWidth="400.0" promptText="100.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <Text layoutX="46.0" layoutY="580.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Deposit Amount">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <TextField fx:id="deposit" layoutX="46.0" layoutY="590.0" prefHeight="25.0" prefWidth="400.0" promptText="100.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <Button layoutX="46.0" layoutY="670.0" mnemonicParsing="false" onAction="#submit" prefHeight="40.0" prefWidth="90.0" text="Submit">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <Text layoutX="46.0" layoutY="660.0" strokeType="OUTSIDE" strokeWidth="0.0">
+      <Text fx:id="message" layoutX="46.0" layoutY="760.0" strokeType="OUTSIDE" strokeWidth="0.0">
          <font>
             <Font size="18.0" />
          </font>
