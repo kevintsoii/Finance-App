@@ -39,6 +39,7 @@ public class MainController {
 
     @FXML
     public void showTransactions() {
+        FXUtil.setPage("/views/Transactions.fxml");
     }
 
     @FXML
