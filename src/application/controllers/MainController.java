@@ -35,6 +35,7 @@ public class MainController {
 
     @FXML
     public void showScheduleTransaction() {
+        FXUtil.setPage("/views/AddScheduled.fxml");
     }
 
     @FXML
@@ -44,6 +45,7 @@ public class MainController {
 
     @FXML
     public void showScheduledTransactions() {
+        FXUtil.setPage("/views/ScheduledTransactions.fxml");
     }
 
     @FXML
