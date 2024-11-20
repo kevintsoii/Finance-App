@@ -2,12 +2,17 @@ package application.controllers;
 
 import application.models.ScheduledTransaction;
 import application.models.ScheduledTransactionManager;
+import application.models.Transaction;
+import application.models.TransactionManager;
 import application.util.FXUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class ScheduledTransactionsController {
@@ -28,6 +33,9 @@ public class ScheduledTransactionsController {
     private TableColumn<ScheduledTransaction, Double> amount;
 
     @FXML
+    private TextField searchTerm;
+    
+    @FXML
     public void showHome() {
         FXUtil.setPage("/views/Home.fxml");
     }
@@ -43,11 +51,28 @@ public class ScheduledTransactionsController {
         // Configure account opening date sort order
         date.setSortType(TableColumn.SortType.ASCENDING);
 
-        // Add accounts to transactionsTable
+        // Add transactions to an array list
         ObservableList<ScheduledTransaction> transactions = FXCollections.observableArrayList(
             ScheduledTransactionManager.getInstance().getTransactions()
         );
-        scheduledTransactionsTable.setItems(transactions);
+        FilteredList<ScheduledTransaction> filteredTransactions = new FilteredList<>(transactions, t -> true);
+        
+        // Listen for search term changes
+        searchTerm.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredTransactions.setPredicate(transaction -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                String query = newValue.toLowerCase();
+                return (transaction.getName() != null && transaction.getName().toLowerCase().contains(query));
+            });
+        });
+        
+        // Add transactions to table
+        SortedList<ScheduledTransaction> sortedTransactions = new SortedList<>(filteredTransactions);
+        sortedTransactions.comparatorProperty().bind(scheduledTransactionsTable.comparatorProperty());
+        scheduledTransactionsTable.setItems(sortedTransactions);
         scheduledTransactionsTable.getSortOrder().add(date);
     }
 }
