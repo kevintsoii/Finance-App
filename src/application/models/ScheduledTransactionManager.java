@@ -32,6 +32,17 @@ public class ScheduledTransactionManager {
         save();
         return true;
     }
+    
+    public boolean editKey(String oldKey, String newKey) {
+        // invalid keys
+        if (!transactions.containsKey(oldKey) || transactions.containsKey(newKey)) {
+            return false;
+        }
+        
+        transactions.put(newKey, transactions.get(oldKey));
+        transactions.remove(oldKey);        
+        return true;
+    }
 
     public ArrayList<ScheduledTransaction> getTransactions() {
         return new ArrayList<>(transactions.values());

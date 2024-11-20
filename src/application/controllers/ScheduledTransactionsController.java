@@ -74,5 +74,18 @@ public class ScheduledTransactionsController {
         sortedTransactions.comparatorProperty().bind(scheduledTransactionsTable.comparatorProperty());
         scheduledTransactionsTable.setItems(sortedTransactions);
         scheduledTransactionsTable.getSortOrder().add(date);
+        
+        // Handle double click to edit
+        scheduledTransactionsTable.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 1) {
+                ScheduledTransaction selectedTransaction = scheduledTransactionsTable.getSelectionModel().getSelectedItem();
+                if (selectedTransaction != null) {
+                    EditScheduledController controller = FXUtil.setCustomPage("/views/EditScheduled.fxml");
+                    if (controller != null) {
+                        controller.setTransaction(selectedTransaction);
+                    }
+                }
+            }
+        });
     }
 }

@@ -83,5 +83,18 @@ public class TransactionsController {
         sortedTransactions.comparatorProperty().bind(transactionsTable.comparatorProperty());
         transactionsTable.setItems(sortedTransactions);
         transactionsTable.getSortOrder().add(date);
+        
+        // Handle double click to edit
+        transactionsTable.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 1) {
+                Transaction selectedTransaction = transactionsTable.getSelectionModel().getSelectedItem();
+                if (selectedTransaction != null) {
+                    EditTransactionController controller = FXUtil.setCustomPage("/views/EditTransaction.fxml");
+                    if (controller != null) {
+                        controller.setTransaction(selectedTransaction);
+                    }
+                }
+            }
+        });
     }
 }

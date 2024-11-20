@@ -69,7 +69,7 @@ public class Transaction {
     
     // Unique ID
     public String getKey() {
-        return account + "_" + date.toString() + "_" + description;
+        return (account + "_" + date.toString() + "_" + description).hashCode() + "";
     }
     
     // CSV String -> Object
