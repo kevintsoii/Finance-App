@@ -9,9 +9,12 @@ import application.models.TransactionManager;
 import application.util.FXUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class TransactionsController {
@@ -35,6 +38,9 @@ public class TransactionsController {
 
     @FXML
     private TableColumn<Transaction, Double> deposit;
+    
+    @FXML
+    private TextField searchTerm;
 
     @FXML
     public void showHome() {
@@ -54,12 +60,28 @@ public class TransactionsController {
         // Configure account opening date sort order
         date.setSortType(TableColumn.SortType.DESCENDING);
 
-        // Add accounts to transactionsTable
+        // Add transactions to an array list
         ObservableList<Transaction> transactions = FXCollections.observableArrayList(
             TransactionManager.getInstance().getTransactions()
         );
-        transactionsTable.setItems(transactions);
-        transactionsTable.getSortOrder().add(date);
+        FilteredList<Transaction> filteredTransactions = new FilteredList<>(transactions, t -> true);
+        
+        // Listen for search term changes
+        searchTerm.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredTransactions.setPredicate(transaction -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
 
+                String query = newValue.toLowerCase();
+                return (transaction.getDescription() != null && transaction.getDescription().toLowerCase().contains(query));
+            });
+        });
+        
+        // Add transactions to table
+        SortedList<Transaction> sortedTransactions = new SortedList<>(filteredTransactions);
+        sortedTransactions.comparatorProperty().bind(transactionsTable.comparatorProperty());
+        transactionsTable.setItems(sortedTransactions);
+        transactionsTable.getSortOrder().add(date);
     }
 }
