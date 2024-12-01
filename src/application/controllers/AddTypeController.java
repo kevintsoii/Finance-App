@@ -1,12 +1,9 @@
 package application.controllers;
 
-import java.time.LocalDate;
-
 import application.models.AccountType;
 import application.models.TypeManager;
 import application.util.FXUtil;
 import javafx.fxml.FXML;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 

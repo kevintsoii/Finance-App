@@ -2,8 +2,6 @@ package application.controllers;
 
 import java.time.LocalDate;
 
-import application.models.Account;
-import application.models.AccountManager;
 import application.models.Transaction;
 import application.models.TransactionManager;
 import application.util.FXUtil;

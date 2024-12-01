@@ -4,11 +4,9 @@ import javafx.fxml.FXML;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
-import java.time.LocalDate;
 import java.util.stream.Collectors;
 
 import application.models.Account;
@@ -17,8 +15,6 @@ import application.models.TypeManager;
 import application.models.AccountType;
 import application.models.ScheduledTransaction;
 import application.models.ScheduledTransactionManager;
-import application.models.Transaction;
-import application.models.TransactionManager;
 import application.util.FXUtil;
 
 public class AddScheduledController {

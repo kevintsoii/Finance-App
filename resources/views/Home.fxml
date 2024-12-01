@@ -1,34 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.HomeController">
+<StackPane prefHeight="800.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.HomeController">
    <children>
-      <Text layoutX="46.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Home">
-         <font>
-            <Font size="48.0" />
-         </font>
-      </Text>
-      <Text layoutX="46.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Accounts">
-         <font>
-            <Font size="22.0" />
-         </font>
-      </Text>
-      <Text layoutX="46.0" layoutY="550.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Upcoming Transactions">
-         <font>
-            <Font size="22.0" />
-         </font>
-      </Text>
-      <TableView fx:id="accountTable" layoutX="46.0" layoutY="150.0" prefHeight="350.0" prefWidth="800.0">
-        <columns>
-          <TableColumn fx:id="name" prefWidth="198.0" text="Name" />
-          <TableColumn fx:id="balance" minWidth="0.0" prefWidth="113.0" text="Balance" />
-            <TableColumn fx:id="date" prefWidth="152.0" text="Opening Date" />
-        </columns>
-      </TableView>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="900.0">
+         <children>
+            <Text layoutX="46.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Home">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </Text>
+            <Text layoutX="46.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Accounts">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Text>
+            <TableView fx:id="accountTable" layoutX="46.0" layoutY="150.0" prefHeight="350.0" prefWidth="800.0">
+              <columns>
+                <TableColumn fx:id="name" prefWidth="198.0" text="Name" />
+                <TableColumn fx:id="balance" minWidth="0.0" prefWidth="113.0" text="Balance" />
+                  <TableColumn fx:id="date" prefWidth="152.0" text="Opening Date" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="notification" prefHeight="800.0" prefWidth="900.0" style="-fx-background-color: LIGHTGOLDENRODYELLOW;" visible="false" StackPane.alignment="CENTER">
+         <children>
+            <Text layoutX="46.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scheduled Transactions Due!">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </Text>
+            <Text fx:id="notificationItems" layoutX="56.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Text>
+            <Button layoutX="844.0" layoutY="29.0" mnemonicParsing="false" onAction="#closeNotification" text="X">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
    </children>
-</AnchorPane>
+</StackPane>

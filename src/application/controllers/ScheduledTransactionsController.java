@@ -2,8 +2,6 @@ package application.controllers;
 
 import application.models.ScheduledTransaction;
 import application.models.ScheduledTransactionManager;
-import application.models.Transaction;
-import application.models.TransactionManager;
 import application.util.FXUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

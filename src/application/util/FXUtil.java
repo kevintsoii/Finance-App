@@ -5,7 +5,7 @@ import java.net.URL;
 
 import application.CommonObjs;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.Parent;
 import javafx.scene.layout.HBox;
 
 public class FXUtil {
@@ -19,7 +19,7 @@ public class FXUtil {
             if (mainBox.getChildren().size() > 1)
                 mainBox.getChildren().remove(1);
 
-            AnchorPane panel = (AnchorPane) FXMLLoader.load(url);
+            Parent panel = FXMLLoader.load(url);
             mainBox.getChildren().add(panel);
         } catch (IOException e) {
             e.printStackTrace();
@@ -36,7 +36,7 @@ public class FXUtil {
 
             // return the loader to pass account later
             FXMLLoader loader = new FXMLLoader(url);
-            AnchorPane panel = loader.load();
+            Parent panel = loader.load();
             mainBox.getChildren().add(panel);
             return loader.getController();
         } catch (IOException e) {
