@@ -50,5 +50,6 @@ public class MainController {
 
     @FXML
     public void showReports() {
+        FXUtil.setPage("/views/Report.fxml");
     }
 }
