@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 import application.models.Account;
 import application.models.AccountManager;
 import application.models.AccountType;
-import application.models.ScheduledTransaction;
 import application.models.Transaction;
 import application.models.TransactionManager;
 import application.models.TypeManager;
@@ -17,10 +16,12 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 
 public class ReportController {
     @FXML
@@ -39,26 +40,37 @@ public class ReportController {
     private TableColumn<Transaction, Double> tDeposit;
     
     @FXML
-    private TableView<ScheduledTransaction> scheduledTransactionsTable;
+    private ComboBox<String> account;
     @FXML
-    private TableColumn<ScheduledTransaction, String> sName;
+    private ComboBox<String> type;
     @FXML
-    private TableColumn<ScheduledTransaction, String> sAccount;
+    private DatePicker date;
     @FXML
-    private TableColumn<ScheduledTransaction, String> sType;
+    private TextField description;
     @FXML
-    private TableColumn<ScheduledTransaction, String> sFrequency;
+    private TextField payment;
     @FXML
-    private TableColumn<ScheduledTransaction, Integer> sDate;
+    private TextField deposit;
+    
+    private Transaction transaction;
+    
     @FXML
-    private TableColumn<ScheduledTransaction, Double> sAmount;
+    private AnchorPane transactionPane;
+    
+    @FXML
+    private AnchorPane reportPane;
 
     @FXML
     private ComboBox<String> accountSelect;
     @FXML
     private ComboBox<String> typeSelect;
     
-    FilteredList<Transaction> filteredTransactions = null;
+    private FilteredList<Transaction> filteredTransactions = null;
+    
+    @FXML public void onClose() {
+        transactionPane.setVisible(false);
+        reportPane.setVisible(true);
+    }
     
     @FXML
     public void showHome() {
@@ -103,6 +115,17 @@ public class ReportController {
 
     @FXML
     public void initialize() {
+        transactionPane.setVisible(false);
+        reportPane.setVisible(true);
+        
+        // make transaction viewing fields uneditable
+        account.setMouseTransparent(true);
+        type.setMouseTransparent(true);
+        date.setMouseTransparent(true);
+        description.setMouseTransparent(true);
+        payment.setMouseTransparent(true);
+        deposit.setMouseTransparent(true);
+        
         // set up select dropdowns
         ObservableList<String> accountChoices = FXCollections.observableArrayList(
             AccountManager.getInstance().getAccounts().stream().map(Account::getName).collect(Collectors.toList())
@@ -137,15 +160,22 @@ public class ReportController {
         transactionsTable.setItems(sortedTransactions);
         transactionsTable.getSortOrder().add(tDate);
         
-        // Handle double click to edit
+        // Handle click to view
         transactionsTable.setOnMouseClicked(event -> {
             if (event.getClickCount() == 1) {
                 Transaction selectedTransaction = transactionsTable.getSelectionModel().getSelectedItem();
                 if (selectedTransaction != null) {
-                    ViewTransactionController controller = FXUtil.setCustomPage("/views/ViewTransaction.fxml");
-                    if (controller != null) {
-                        controller.setTransaction(selectedTransaction);
-                    }
+                    transaction = selectedTransaction;
+                    
+                    account.setValue(transaction.getAccount());
+                    type.setValue(transaction.getTransactionType());
+                    date.setValue(transaction.getDate());
+                    description.setText(transaction.getDescription());
+                    payment.setText(String.valueOf(transaction.getPayment()));
+                    deposit.setText(String.valueOf(transaction.getDeposit()));
+                    
+                    transactionPane.setVisible(true);
+                    reportPane.setVisible(false);
                 }
             }
         });

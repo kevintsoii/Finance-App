@@ -1,7 +1,5 @@
 package application.models;
 
-import java.time.LocalDate;
-
 public class ScheduledTransaction {
     private String name;
     private String account;
