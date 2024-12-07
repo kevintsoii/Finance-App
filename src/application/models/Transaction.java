@@ -2,13 +2,17 @@ package application.models;
 
 import java.time.LocalDate;
 
-public class Transaction {
+public class Transaction implements FlatFileEntity {
     private String account;
     private String transactionType;
     private LocalDate date;
     private String description;
     private double payment;
     private double deposit;
+
+    public Transaction() {
+        this("", "", LocalDate.now(), "", 0.0, 0.0);
+    }
     
     public Transaction(String account, String transactionType, LocalDate date, String description, double payment, double deposit) {
         this.account = account;
@@ -73,13 +77,18 @@ public class Transaction {
     }
     
     // CSV String -> Object
-    public static Transaction fromCSV(String text) {
+    public void fromCSV(String text) {
         String[] fields = text.split(",");
-        return new Transaction(fields[0], fields[1], LocalDate.parse(fields[2]), fields[3], Double.parseDouble(fields[4]), Double.parseDouble(fields[5]));
+        setAccount(fields[0]);
+        setTransactionType(fields[1]);
+        setDate(LocalDate.parse(fields[2]));
+        setDescription(fields[3]);
+        setPayment(Double.parseDouble(fields[4]));
+        setDeposit(Double.parseDouble(fields[5]));
     }
     
     // Object -> CSV String
-    public String toString() {
+    public String toCSV() {
         return String.join(",", account, transactionType, date.toString(), description, String.valueOf(payment), String.valueOf(deposit));
     }
 }

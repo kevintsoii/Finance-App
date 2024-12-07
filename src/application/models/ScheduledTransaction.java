@@ -1,12 +1,16 @@
 package application.models;
 
-public class ScheduledTransaction {
+public class ScheduledTransaction implements FlatFileEntity {
     private String name;
     private String account;
     private String type;
     private String frequency;
     private int date;
     private double amount;
+
+    public ScheduledTransaction() {
+        this("", "", "", "", 0, 0.0);
+    }
 
     // constructor
     public ScheduledTransaction(String name, String account, String type, String frequency, int date, double amount) {
@@ -38,13 +42,18 @@ public class ScheduledTransaction {
     }
     
     // CSV String -> Object
-    public static ScheduledTransaction fromCSV(String text) {
+    public void fromCSV(String text) {
         String[] fields = text.split(",");
-        return new ScheduledTransaction(fields[0], fields[1], fields[2], fields[3], Integer.parseInt(fields[4]), Double.parseDouble(fields[5]));
+        setName(fields[0]);
+        setAccount(fields[1]);
+        setType(fields[2]);
+        setFrequency(fields[3]);
+        setDate(Integer.parseInt(fields[4]));
+        setAmount(Double.parseDouble(fields[5]));
     }
     
     // Object -> CSV String
-    public String toString() {
+    public String toCSV() {
         return String.join(",", name, account, type, frequency, String.valueOf(date), String.valueOf(amount));
     }
 }

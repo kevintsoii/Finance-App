@@ -11,7 +11,7 @@ public class TypeManager {
     private HashMap<String, AccountType> types;
 
     private TypeManager() {
-        types = FileUtil.loadObjectsToMap(FILE_PATH, AccountType::fromCSV, AccountType::getKey);
+        types = FileUtil.loadObjectsToMap(FILE_PATH, AccountType::new, AccountType::getKey);
     }
 
     public static TypeManager getInstance() {

@@ -11,7 +11,7 @@ public class ScheduledTransactionManager {
     private HashMap<String, ScheduledTransaction> transactions;
 
     private ScheduledTransactionManager() {
-        transactions = FileUtil.loadObjectsToMap(FILE_PATH, ScheduledTransaction::fromCSV, ScheduledTransaction::getKey);
+        transactions = FileUtil.loadObjectsToMap(FILE_PATH, ScheduledTransaction::new, ScheduledTransaction::getKey);
     }
 
     public static ScheduledTransactionManager getInstance() {

@@ -11,7 +11,7 @@ public class AccountManager {
     private HashMap<String, Account> accounts;
 
     private AccountManager() {
-        accounts = FileUtil.loadObjectsToMap(FILE_PATH, Account::fromCSV, Account::getKey);
+        accounts = FileUtil.loadObjectsToMap(FILE_PATH, Account::new, Account::getKey);
     }
 
     public static AccountManager getInstance() {

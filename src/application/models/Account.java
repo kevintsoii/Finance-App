@@ -2,10 +2,14 @@ package application.models;
 
 import java.time.LocalDate;
 
-public class Account {
+public class Account implements FlatFileEntity {
     private String name;
     private LocalDate date;
     private double balance;
+
+    public Account() {
+        this("", LocalDate.now(), 0.0);
+    }
     
     public Account(String name, LocalDate date, double balance) {
         this.name = name;
@@ -40,13 +44,15 @@ public class Account {
     }
     
     // CSV String -> Object
-    public static Account fromCSV(String text) {
+    public void fromCSV(String text) {
         String[] fields = text.split(",");
-        return new Account(fields[0], LocalDate.parse(fields[1]), Double.parseDouble(fields[2]));
+        setName(fields[0]);
+        setDate(LocalDate.parse(fields[1]));
+        setBalance(Double.parseDouble(fields[2]));
     }
     
     // Object -> CSV String
-    public String toString() {
+    public String toCSV() {
         return name + "," + date.toString() + "," + balance;
     }
 }

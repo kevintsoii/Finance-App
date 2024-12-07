@@ -11,7 +11,7 @@ public class TransactionManager {
     private HashMap<String, Transaction> transactions;
 
     private TransactionManager() {
-        transactions = FileUtil.loadObjectsToMap(FILE_PATH, Transaction::fromCSV, Transaction::getKey);
+        transactions = FileUtil.loadObjectsToMap(FILE_PATH, Transaction::new, Transaction::getKey);
     }
 
     public static TransactionManager getInstance() {

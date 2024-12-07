@@ -1,7 +1,11 @@
 package application.models;
 
-public class AccountType {
+public class AccountType implements FlatFileEntity {
     private String name;
+
+    public AccountType() {
+        this("");
+    }
     
     public AccountType(String name) {
         this.name = name;
@@ -20,12 +24,12 @@ public class AccountType {
     }
     
     // CSV String -> Object
-    public static AccountType fromCSV(String text) {
-        return new AccountType(text);
+    public void fromCSV(String text) {
+        setName(text);
     }
     
     // Object -> CSV String
-    public String toString() {
+    public String toCSV() {
         return name;
     }
 }

@@ -8,9 +8,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.function.Function;
+import java.util.function.Supplier;
+import application.models.FlatFileEntity;
 
 public class FileUtil {
-    public static <K, V> HashMap<K, V> loadObjectsToMap(String fileName, Function<String, V> createObject, Function<V, K> getKey) {
+    public static <K, V extends FlatFileEntity> HashMap<K, V> loadObjectsToMap(String fileName, Supplier<V> createObject, Function<V, K> getKey) {
         // HashMap for O(1) search and common operations
         HashMap<K, V> objects = new HashMap<>();
         BufferedReader reader = null;
@@ -27,7 +29,8 @@ public class FileUtil {
             
             // Put each line into HashMap
             while ((line = reader.readLine()) != null) {
-                V object = createObject.apply(line);
+                V object = createObject.get();
+                object.fromCSV(line);
                 K key = getKey.apply(object);
                 objects.put(key, object);
             }
@@ -46,13 +49,13 @@ public class FileUtil {
         return objects;
     }
     
-    public static <K, V> void writeMapToFile(String fileName, HashMap<K, V> map) {
+    public static <K, V extends FlatFileEntity> void writeMapToFile(String fileName, HashMap<K, V> map) {
         BufferedWriter writer = null;
         
         try {
             writer = new BufferedWriter(new FileWriter(fileName));
             for (V value: map.values()) {
-                writer.write(value.toString());
+                writer.write(value.toCSV());
                 writer.newLine();
             }
         } catch (IOException e) {
